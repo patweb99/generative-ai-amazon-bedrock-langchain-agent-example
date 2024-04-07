@@ -424,9 +424,9 @@ def verify_identity(intent_request):
                     if item['planName'].lower() == 'mortgage':
                         message = "Your mortgage account summary includes a ${:,.2f} loan at {}% interest with ${:,.2f} of unpaid principal. Your next payment of ${:,.2f} is scheduled for {}.".format(float(item['loanAmount']), float(item['loanInterest']), float(item['unpaidPrincipal']), float(item['amountDue']), item['dueDate'])
                     elif item['planName'].lower() == 'checking':
-                        message = "I see you have a Checking account with AnyCompany. Your account balance is ${:,.2f} and your next payment amount of ${:,.2f} is scheduled for {}.".format(float(item['unpaidPrincipal']), float(item['paymentAmount']), item['dueDate'])
+                        message = "I see you have a Checking account with GameBot. Your account balance is ${:,.2f} and your next payment amount of ${:,.2f} is scheduled for {}.".format(float(item['unpaidPrincipal']), float(item['paymentAmount']), item['dueDate'])
                     elif item['planName'].lower() == 'loan':
-                        message = "I see you have a Loan account with AnyCompany. Your account balance is ${:,.2f} and your next payment amount of ${:,.2f} is scheduled for {}.".format(float(item['unpaidPrincipal']), float(item['paymentAmount']), item['dueDate'])
+                        message = "I see you have a Loan account with GameBot. Your account balance is ${:,.2f} and your next payment amount of ${:,.2f} is scheduled for {}.".format(float(item['unpaidPrincipal']), float(item['paymentAmount']), item['dueDate'])
                     
                     messages.append(message)
 
