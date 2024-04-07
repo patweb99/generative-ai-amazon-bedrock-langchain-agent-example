@@ -103,18 +103,19 @@ def elicit_intent(intent_request, session_attributes, message):
             {
                 'contentType': 'PlainText', 
                 'content': message
-            },
-            {
+            }
+            """
+            ,{
                 'contentType': 'ImageResponseCard',
                 'imageResponseCard': {
                     "buttons": [
                         {
-                            "text": "Loan Application",
-                            "value": "Loan Application"
+                            "text": "Newest Games",
+                            "value": "Newest Games"
                         },
                         {
-                            "text": "Loan Calculator",
-                            "value": "Loan Calculator"
+                            "text": "What kids like",
+                            "value": "What kids like"
                         },
                         {
                             "text": "Ask GenAI",
@@ -123,7 +124,8 @@ def elicit_intent(intent_request, session_attributes, message):
                     ],
                     "title": "How can I help you?"
                 }
-            }     
+            }  
+            """   
         ]
     }
 
@@ -342,7 +344,7 @@ def validate_pin(intent_request, slots):
             return build_validation_result(
                 False,
                 'UserName',
-                'Our records indicate there is no profile belonging to the username, {}. Please enter a valid username'.format(username)
+                'Wronge username, {}. Please try again'.format(username)
             )
         session_attributes = intent_request['sessionState'].get("sessionAttributes") or {}
         session_attributes['UserName'] = username
@@ -352,7 +354,7 @@ def validate_pin(intent_request, slots):
         return build_validation_result(
             False,
             'UserName',
-            'Our records indicate there are no accounts belonging to that username. Please try again.'
+            'Account not found. Please try again.'
         )
 
     if pin is not None:
@@ -360,10 +362,10 @@ def validate_pin(intent_request, slots):
             return build_validation_result(
                 False,
                 'Pin',
-                'You have entered an incorrect PIN. Please try again.'.format(pin)
+                'Wrong PIN. Please try again.'.format(pin)
             )
     else:
-        message = "Thank you for choosing AnyCompany, {}. Please confirm your 4-digit PIN before we proceed.".format(username)
+        message = "Welcome to Game Bot, {}. Please confirm your 4-digit PIN before we proceed.".format(username)
         return build_validation_result(
             False,
             'Pin',
@@ -477,9 +479,10 @@ def validate_loan_application(intent_request, slots):
             return build_validation_result(
                 False,
                 'UserName',
-                'We cannot find an account under that username. Please try again with a valid username.'
+                'Wrong username. Please try again.'
             )
 
+    """
     if loan_value is not None:
         if loan_value.isnumeric():
             if not isvalid_zero_or_greater(loan_value):
@@ -625,8 +628,9 @@ def validate_loan_application(intent_request, slots):
             False,
             'ClosingDate',
             'When are you looking to close?'
-        )
-
+    )
+    """
+    
     return {'isValid': True}
 
 def loan_application(intent_request):
@@ -641,13 +645,13 @@ def loan_application(intent_request):
     username = try_ex(slots['UserName'])
     loan_value = try_ex(slots['LoanValue'])
     monthly_income = try_ex(slots['MonthlyIncome'])
-    work_history = try_ex(slots['WorkHistory'])
+    # work_history = try_ex(slots['WorkHistory'])
     credit_score = try_ex(slots['CreditScore'])
-    housing_expense = try_ex(slots['HousingExpense'])
-    debt_amount = try_ex(slots['DebtAmount'])
+    # housing_expense = try_ex(slots['HousingExpense'])
+    # debt_amount = try_ex(slots['DebtAmount'])
     down_payment = try_ex(slots['DownPayment'])
-    coborrow = try_ex(slots['Coborrow'])
-    closing_date = try_ex(slots['ClosingDate'])
+    # coborrow = try_ex(slots['Coborrow'])
+    # closing_date = try_ex(slots['ClosingDate'])
 
     confirmation_status = intent_request['sessionState']['intent']['confirmationState']
     session_attributes = intent_request['sessionState'].get("sessionAttributes") or {}

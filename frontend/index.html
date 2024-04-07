@@ -34,6 +34,20 @@
 
 <!-- HC -->
 <meta content="en-us" http-equiv="Content-Language" />
+
+<style>
+    body{
+        margin: 0; /* Remove default margin */
+    }
+    iframe{      
+        display: block;  /* iframes are inline by default */   
+        height: 100vh;  /* Set height to 100% of the viewport height */   
+        width: 100vw;  /* Set width to 100% of the viewport width */     
+        border: none; /* Remove default border */
+        background: lightyellow; /* Just for styling */
+    }
+</style>
+
 </head>
 <body>
 
@@ -43,8 +57,8 @@
 
 <iframe
     style="border: none;"
-    height="600px"
-    width="400px"
+    height="90vh"
+    width="100%"
     src="https://widget.kommunicate.io/chat?appId=654ec8806eab0684b4e4d94e84130f8a"
     allow="microphone; geolocation;"
 >
